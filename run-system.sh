@@ -8,3 +8,4 @@ GATEWAY_CONTAINER=chinook-gateway
 AGENT_CONTAINER=chinook-agent
 
 # Docker commands are added below, one commit per command
+docker network create --label project=music-agent "$NETWORK"
