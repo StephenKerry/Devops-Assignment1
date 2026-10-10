@@ -1,12 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+NETWORK=chinook-net
+DB_CONTAINER=chinook-db
+SEEDER_CONTAINER=chinook-seeder
+GATEWAY_CONTAINER=chinook-gateway
+AGENT_CONTAINER=chinook-agent
 
-docker build -t assignment-demo:1.0 ./sample-app/
-
-docker run -d --name assignment \
-       -p 3000:80 \
-    assignment-demo:1.0
-
-sleep 10
-echo "Container started"
+# Docker commands are added below, one commit per command
