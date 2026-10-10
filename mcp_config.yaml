@@ -1,6 +1,6 @@
 cockroachdb:
-  host: [DATABASE_DOMAIN_NAME]
+  host: music-db
   port: 5432
-  database: [DATABASE_NAME]
-  username: [DATABASE_USERNAME]
+  database: music
+  username: music_user
   ssl_mode: disable
