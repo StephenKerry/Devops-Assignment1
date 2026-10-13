@@ -5,4 +5,6 @@ set -euo pipefail
 
 docker ps -aq --filter label=project=music-agent | xargs -r docker rm -f
 
+docker image ls -q --filter label=project=music-agent | xargs -r docker rmi -f
+
 docker network ls -q --filter label=project=music-agent | xargs -r docker network rm
