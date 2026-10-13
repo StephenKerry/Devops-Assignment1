@@ -21,3 +21,12 @@ docker run -d \
   postgres
 
   docker build --target seeder --label project=music-agent -t "$SEEDER_IMAGE" .
+
+  docker run \
+  --name "$SEEDER_CONTAINER" \
+  --network "$NETWORK" \
+  --label project=music-agent \
+  -v "$PWD/Chinook.db":/app/Chinook.db \
+  -e SQLITE_FILE=/app/Chinook.db \
+  -e DATABASE_URL="postgres://music_user:pass@music-db:5432/music" \
+  "$SEEDER_IMAGE"
