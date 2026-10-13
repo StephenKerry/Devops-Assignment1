@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-NETWORK=chinook-net
-DB_CONTAINER=chinook-db
-SEEDER_CONTAINER=chinook-seeder
-GATEWAY_CONTAINER=chinook-gateway
-AGENT_CONTAINER=chinook-agent
+NETWORK=music-net
+DB_CONTAINER=music-db
+SEEDER_CONTAINER=music-seeder
+GATEWAY_CONTAINER=music-gateway
+AGENT_CONTAINER=music-agent
 
 # Docker commands are added below, one commit per command
 docker network create --label project=music-agent "$NETWORK"
+
+docker run -d \
+  --name "$DB_CONTAINER" \
+  --network "$NETWORK" \
+  --label project=music-agent \
+  -e POSTGRES_USER=music_user \
+  -e POSTGRES_PASSWORD=pass \
+  -e POSTGRES_DB=music \
+  postgres
