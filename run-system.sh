@@ -6,6 +6,7 @@ DB_CONTAINER=music-db
 SEEDER_CONTAINER=music-seeder
 GATEWAY_CONTAINER=music-gateway
 AGENT_CONTAINER=music-agent
+SEEDER_IMAGE=music-seeder
 
 # Docker commands are added below, one commit per command
 docker network create --label project=music-agent "$NETWORK"
@@ -18,3 +19,5 @@ docker run -d \
   -e POSTGRES_PASSWORD=pass \
   -e POSTGRES_DB=music \
   postgres
+
+  docker build --target seeder --label project=music-agent -t "$SEEDER_IMAGE" .
