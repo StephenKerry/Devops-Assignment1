@@ -7,6 +7,7 @@ SEEDER_CONTAINER=music-seeder
 GATEWAY_CONTAINER=music-gateway
 AGENT_CONTAINER=music-agent
 SEEDER_IMAGE=music-seeder
+AGENT_IMAGE=music-agent-image
 
 # Docker commands are added below, one commit per command
 docker network create --label project=music-agent "$NETWORK"
@@ -50,3 +51,5 @@ done
   --servers=cockroachdb \
   --tools=execute_query \
   --config=/mcp_config.yaml
+
+  docker build --target agent --label project=music-agent -t "$AGENT_IMAGE" .
