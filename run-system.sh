@@ -52,6 +52,11 @@ done
   --tools=execute_query \
   --config=/mcp_config.yaml
 
+  until docker logs "$GATEWAY_CONTAINER" 2>&1 | grep "Start sse server" > /dev/null; do
+  echo "Waiting for MCP gateway..."
+  sleep 2
+done
+
   docker build --target agent --label project=music-agent -t "$AGENT_IMAGE" .
 
   docker run \
