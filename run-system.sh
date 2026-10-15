@@ -12,10 +12,13 @@ AGENT_IMAGE=music-agent-image
 # Docker commands are added below, one commit per command
 docker network create --label project=music-agent "$NETWORK"
 
+docker volume create --label project=music-agent music-pgdata
+
 docker run -d \
   --name "$DB_CONTAINER" \
   --network "$NETWORK" \
   --label project=music-agent \
+  -v music-pgdata:/var/lib/postgresql \
   -e POSTGRES_USER=music_user \
   -e POSTGRES_PASSWORD=pass \
   -e POSTGRES_DB=music \
