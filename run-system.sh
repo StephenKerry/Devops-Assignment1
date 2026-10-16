@@ -31,7 +31,7 @@ docker run -d \
   sleep 1
 done
 
-  docker run \
+  docker run --rm \
   --name "$SEEDER_CONTAINER" \
   --network "$NETWORK" \
   --label project=music-agent \
@@ -62,7 +62,7 @@ done
 
   docker build --target agent --label project=music-agent -t "$AGENT_IMAGE" .
 
-  docker run \
+  docker run --rm \
   --name "$AGENT_CONTAINER" \
   --network "$NETWORK" \
   --label project=music-agent \
