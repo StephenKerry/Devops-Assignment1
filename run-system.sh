@@ -35,7 +35,7 @@ done
   --name "$SEEDER_CONTAINER" \
   --network "$NETWORK" \
   --label project=music-agent \
-  -v "$PWD/Chinook.db":/app/Chinook.db \
+    -v "$PWD/Chinook.db":/app/Chinook.db:ro \
   -e SQLITE_FILE=/app/Chinook.db \
   -e DATABASE_URL="postgres://music_user:pass@music-db:5432/music" \
   "$SEEDER_IMAGE"
