@@ -11,4 +11,7 @@ docker volume ls -q --filter label=project=music-agent | xargs -r docker volume 
 docker network ls -q --filter label=project=music-agent | xargs -r docker network rm
 
 
-docker image ls -q --filter label=project=music-agent | xargs -r docker rmi -f
+docker image ls -q --filter label=project=music-agent | xargs -r docker rmi -f 
+echo ""
+echo " Cleanup complete! Clean environment.     "
+echo ""

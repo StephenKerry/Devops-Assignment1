@@ -30,6 +30,7 @@ docker run -d \
   echo "Waiting for Postgres..."
   sleep 1
 done
+ echo "PostgresSQL is ready"
 
   docker run --rm \
   --name "$SEEDER_CONTAINER" \
